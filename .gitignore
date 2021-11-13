@@ -1,0 +1,7 @@
+.pytest_cache
+dist
+solring.egg-info
+build
+*.txt
+*.csv
+.idea
