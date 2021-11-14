@@ -1,6 +1,7 @@
 import argparse
 import nbformat
 import mistune
+import sys
 
 from traitlets.config import Config
 from nbconvert import NotebookExporter
@@ -34,7 +35,7 @@ class HighlightRenderer(mistune.Renderer):
         content += '\n'
         for toc in self.headers:
             text, level, count = toc
-            content += ('' if level == 1 else '\t' * (level - 1)) + '- ' + self._link(text, text)
+            content += ('' if level == 1 else '  ' * (level - 1)) + '- ' + self._link(text, text)
             content += '\n'
         return content
 
@@ -51,7 +52,9 @@ class HighlightRenderer(mistune.Renderer):
 
 class Toci:
 
-    def execute(self, params):
+    def execute(self, notebook=None) -> str:
+        assert notebook is not None, "the notebook is not valid"
+
         renderer = HighlightRenderer()
         markdown = mistune.Markdown(renderer=renderer)
 
@@ -61,7 +64,7 @@ class Toci:
                     markdown(cell.source)
                 return cell, resources
 
-        with open(params.notebook_path) as fh:
+        with open(notebook) as fh:
             nb = nbformat.reads(fh.read(), nbformat.NO_CONVERT)
 
         c = Config()
@@ -69,15 +72,17 @@ class Toci:
         exporter = NotebookExporter(config=c)
         _, _ = exporter.from_notebook_node(nb)
 
-        print(renderer.render_toc())
+        return renderer.render_toc()
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--version', action='version', version='solring 0.0.2')
+    parser.add_argument('--version', action='version', version='toci 0.0.1')
+    parser.add_argument('--notebook', '-n', required=True, help="an ipynb notebook file")
     args = parser.parse_args(sys.argv[1:])
+
     toci = Toci()
-    toci.execute(args)
+    print(toci.execute(args.notebook))
 
 
 if __name__ == '__main__':
