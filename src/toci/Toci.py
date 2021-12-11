@@ -46,6 +46,8 @@ class HighlightRenderer(mistune.Renderer):
         :param text: text content for description.
         """
         link = mistune.escape_link(link).replace(' ', '-')
+        link = link.replace('.', '')
+        link = link.lower()
         title = mistune.escape(text, quote=False)
         return '[%s](#%s)' % (title, link)
 
