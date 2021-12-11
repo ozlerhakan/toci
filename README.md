@@ -24,7 +24,7 @@ $ toci -n notebook.ipynb
 # Table of Content
 - [Intro](#intro)
   - [Heading 2](#heading-2)
-    - [heading 3](#heading-3)
+    - [Heading 3](#heading-3)
   - [Another Heading 2](#another-Heading-2)
   - [Another Heading 2 2](#another-Heading-2-2)
     - [Another Heading 3](#another-Heading-3)
