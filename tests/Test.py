@@ -15,11 +15,13 @@ class MyTestCase(unittest.TestCase):
         expected_toc = """# Table of Content
 - [Intro](#intro)
   - [Heading 2](#heading-2)
-    - [Heading 3](#heading-3)
+    - [3. Heading 3](#3-heading-3)
   - [Another Heading 2](#another-heading-2)
   - [Another Heading 2 2](#another-heading-2-2)
     - [Another Heading 3](#another-heading-3)
       - [Another Heading 4](#another-heading-4)
+- [😽 Cat Section](#-cat-section)
+  - [is another section ready?](#is-another-section-ready)
 """
         self.assertEqual(toc, expected_toc)
 

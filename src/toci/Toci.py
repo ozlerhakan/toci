@@ -46,10 +46,12 @@ class HighlightRenderer(mistune.Renderer):
         :param text: text content for description.
         """
         link = mistune.escape_link(link).replace(' ', '-')
-        link = link.replace('.', '')
-        link = link.lower()
-        title = mistune.escape(text, quote=False)
-        return '[%s](#%s)' % (title, link)
+        ready_link = ""
+        for c in link:
+            if c.isalpha() or c.isalnum() or c == '-':
+                ready_link += c
+        link = ready_link.lower()
+        return '[%s](#%s)' % (text, link)
 
 
 class Toci:

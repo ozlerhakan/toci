@@ -5,7 +5,7 @@ Toci is a markdown tool to generate an outline from a given Jupyter notebook. It
 ## How it works
 
 ```
-$ pip install toci==0.0.2
+$ pip install toci==0.0.3
 
 $ toci --help
 usage: toci [-h] [--version] --notebook NOTEBOOK
@@ -25,10 +25,12 @@ $ toci -n notebook.ipynb
 - [Intro](#intro)
   - [Heading 2](#heading-2)
     - [Heading 3](#heading-3)
-  - [Another Heading 2](#another-Heading-2)
-  - [Another Heading 2 2](#another-Heading-2-2)
-    - [Another Heading 3](#another-Heading-3)
-      - [Another Heading 4](#another-Heading-4)
+  - [Another Heading 2](#another-heading-2)
+  - [Another Heading 2 2](#another-heading-2-2)
+    - [Another Heading 3](#another-heading-3)
+      - [Another Heading 4](#another-heading-4)
+- [😽 Cat Section](#-cat-section)
+  - [is another section ready?](#is-another-section-ready)
 ```
 
 ## LICENSE
