@@ -46,11 +46,8 @@ class HighlightRenderer(mistune.Renderer):
         :param text: text content for description.
         """
         link = mistune.escape_link(link).replace(' ', '-')
-        ready_link = ""
-        for c in link:
-            if c.isalpha() or c.isalnum() or c == '-':
-                ready_link += c
-        link = ready_link.lower()
+        link = ''.join([c for c in link if c.isalpha() or c.isalnum() or c == '-'])
+        link = link.lower()
         return '[%s](#%s)' % (text, link)
 
 
