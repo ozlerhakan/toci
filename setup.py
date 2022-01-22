@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 if __name__ == "__main__":
     setup(
         name="toci",
-        version="0.0.2",
+        version="0.0.3",
         author="Hakan Ozler",
         author_email="ozler.hakan@gmail.com",
         description="markdown tool to create table of content from jupyter notebooks",
