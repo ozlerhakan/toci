@@ -45,9 +45,10 @@ class HighlightRenderer(mistune.Renderer):
         :param link: href link for ``(#)`` tag.
         :param text: text content for description.
         """
-        link = mistune.escape_link(link).replace(' ', '-')
-        link = ''.join([c for c in link if c.isalpha() or c.isalnum() or c == '-'])
-        link = link.lower()
+        # link = mistune.escape_link(link).replace(' ', '-')
+        # link = ''.join([c for c in link if c.isalpha() or c.isalnum() or c == '-'])
+        # link = link.lower()
+        link=text.replace(' ', '-')
         return '[%s](#%s)' % (text, link)
 
 
@@ -65,7 +66,7 @@ class Toci:
                     markdown(cell.source)
                 return cell, resources
 
-        with open(notebook) as fh:
+        with open(notebook,encoding='utf-8') as fh:
             nb = nbformat.reads(fh.read(), nbformat.NO_CONVERT)
 
         c = Config()
