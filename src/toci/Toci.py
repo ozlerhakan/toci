@@ -65,7 +65,7 @@ class Toci:
                     markdown(cell.source)
                 return cell, resources
 
-        with open(notebook) as fh:
+        with open(notebook, encoding='utf-8') as fh:
             nb = nbformat.reads(fh.read(), nbformat.NO_CONVERT)
 
         c = Config()
